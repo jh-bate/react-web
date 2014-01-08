@@ -1,0 +1,25 @@
+{
+  "name": "ClamShell",
+  "version": "0.0.1",
+  "description": "Get started with building React apps",
+  "repository": "",
+  "dependencies": {
+    "parse": "petehunt/parsesdk-isomorphic",
+    "envify": "~0.2.0",
+    "react": "http://petehunt.net/react/react-0.5.1.tar.gz",
+    "react-touch": "0.0.1"
+  },
+  "devDependencies": {
+    "jsx-loader": "petehunt/jsx-loader",
+    "webpack": "0.11.0",
+    "url-loader": "0.5.1",
+    "css-loader": "0.6.2",
+    "style-loader": "0.6.0",
+    "chai": "1.8.1",
+    "mocha": "1.16.2"
+  },
+  "scripts": {
+    "start": "webpack --watch --debug src/main.js build/main.js"
+  },
+  "author": ""
+}
