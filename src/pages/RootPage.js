@@ -4,11 +4,10 @@ var React = require('react');
 var MobileLayout = require('../layout/MobileLayout');
 var SignInPage = require('../pages/SignInPage');
 var MessagesPage = require('../pages/MessagesPage');
-var PeoplePage = require('../pages/PeoplePage');
+var GroupsPage = require('../pages/GroupsPage');
 
 
 var RootPage = React.createClass({
-  
 
   render: function() {
     
@@ -16,10 +15,10 @@ var RootPage = React.createClass({
 
     if (routeName === '' || routeName === 'home') {
       return <MobileLayout className="SignInPage" route="home"><SignInPage /></MobileLayout>;
-    } else if (routeName === 'messages') {
+    } else if (routeName === 'notes') {
       return <MobileLayout><MessagesPage /></MobileLayout>;
-    } else if (routeName === 'people') {
-      return <MobileLayout><PeoplePage /></MobileLayout>;
+    } else if (routeName === 'team') {
+      return <MobileLayout><GroupsPage /></MobileLayout>;
     } else {
       return <h1>Route not found</h1>;
     }

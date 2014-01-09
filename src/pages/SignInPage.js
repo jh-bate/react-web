@@ -2,8 +2,6 @@
 
 var React = require('react');
 
-var Button = require('../components/Button');
-
 require('./SignInPage.css');
 
 var SignInPage = React.createClass({

@@ -2,8 +2,7 @@
 
 var React = require('react');
 
-var Messages = require('../components/Messages');
-var MessageForm = require('../components/MessageForm');
+var MessageItemList = require('../components/MessageItemList');
 var ContentWithActionBlock = require('../components/ContentWithActionBlock');
 var Spinner = require('../components/Spinner');
 
@@ -26,20 +25,17 @@ var MessagesPage = React.createClass({
         }.bind(this));
 
     },
-    handleCommentSubmit: function(comment) {
-        this.setState({loading:true});
-        var comments = this.state.data;
-        comments.push(comment);
-
-        mailbox.update(comments, function(messages){
-            this.setState({data: messages,loading:false});
-        }.bind(this));
-
-    },
     componentWillMount: function() {
         this.loadCommentsFromServer();
     },
-
+    handleNewMessage: function(){
+        console.log('should add new message');
+        return false;
+    },
+    handleShowThread: function(){
+        console.log('should show messages in thread');
+        return false;
+    },
     render: function() {
 
         var content = (
@@ -48,12 +44,12 @@ var MessagesPage = React.createClass({
 
         if(!this.state.loading){
             content = (
-                <Messages data={this.state.data}></Messages>
+                <MessageItemList messages={this.state.data} onMessageSelected={this.handleShowThread}></MessageItemList>
             );
         }
 
         var action = (
-            <MessageForm className='MessagesPage-action' onCommentSubmit={this.handleCommentSubmit}></MessageForm>
+            <a className='btn MessagesPage-action' onClick={this.handleNewMessage}>New Message</a>
         );
 
         return (

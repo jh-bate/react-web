@@ -4,8 +4,7 @@
   "description": "Get started with building React apps",
   "repository": "",
   "dependencies": {
-    "parse": "petehunt/parsesdk-isomorphic",
-    "envify": "~0.2.0",
+    "envify": "0.2.0",
     "react": "http://petehunt.net/react/react-0.5.1.tar.gz",
     "react-touch": "0.0.1"
   },

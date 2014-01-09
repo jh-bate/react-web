@@ -2,21 +2,21 @@
 
 var React = require('react');
 
-var People = require('../components/People');
+var GroupItemList = require('../components/GroupItemList');
 var ContentWithActionBlock = require('../components/ContentWithActionBlock');
 var Spinner = require('../components/Spinner');
 
 var contacts = require('../data/contacts')();
 
 
-require('./PeoplePage.css');
+require('./GroupsPage.css');
 
-var PeoplePage = React.createClass({
+var GroupsPage = React.createClass({
 
     getInitialState: function() {
         return {data: [],loading:false};
     },
-    loadContactsFromServer: function() {
+    loadGroupsFromServer: function() {
         this.setState({loading:true});
 
         contacts.load(function(contacts){
@@ -25,9 +25,16 @@ var PeoplePage = React.createClass({
 
     },
     componentWillMount: function() {
-        this.loadContactsFromServer();
+        this.loadGroupsFromServer();
     },
-
+    handleNewMessage:function(){
+        console.log('should add new message')
+        return false;
+    },
+    handleShowThread: function(){
+        console.log('should show messages for group');
+        return false;
+    },
     render: function() {
 
         var content = (
@@ -36,23 +43,23 @@ var PeoplePage = React.createClass({
 
         if(!this.state.loading){
             content = (
-                <People data={this.state.data}></People>
+                <GroupItemList groups={this.state.data} onGroupSelected={this.handleShowThread}></GroupItemList>
             );
         }
 
         var action = (
-            <a className='PeoplePage-action btn' onClick={this.handleNewMessage}>New Message</a>
+            <a className='GroupsPage-action btn' onClick={this.handleNewMessage}>New Message</a>
         );
 
         return (
             <ContentWithActionBlock 
-                className="PeoplePage" 
+                className="GroupsPage" 
                 options={{scrollingX: false}}
                 action={action}>
-                <div className="PeoplePage-content">{content}</div>
+                <div className="GroupsPage-content">{content}</div>
             </ContentWithActionBlock>
         );
     }
 });
 
-module.exports = PeoplePage;
+module.exports = GroupsPage;

@@ -1,24 +1,24 @@
-var people = [];
+var groups = [];
 
 /*
     loading and updating messages via api
 */
 var contacts = function() {
 
-    people = [
+    groups = [
         {
-            id:'1',
-            groups: ['1'],
-            name : 'Jamie Bate'
+            groupid:'1',
+            name : 'Team Bobby',
+            members: ['1','2']
         },
         {
-            id:'2',
-            groups: ['1','2'],
-            name : 'Jamie Bate'
-        },
-        {   id:'3',
             groupid:'2',
-            name : 'Jamie Bate'
+            name : 'Team Jamie Bate',
+            members: ['1','2']
+        },
+        {   groupid:'3',
+            name : 'Team Willow',
+            members: ['1','2']
         }
     ];
 
@@ -31,7 +31,7 @@ var contacts = function() {
     Load via the API
 */
 function load(cb){
-    return cb(people);  
+    return cb(groups);  
 }
 
 
