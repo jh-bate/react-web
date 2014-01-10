@@ -1,0 +1,21 @@
+.MessagesPage {
+    background: white;
+    height: 100%;
+    width: 100%;
+}
+
+.MessagesPage-content {
+    padding: 20px;
+}
+
+.comment{
+    border-bottom: 1px solid black;
+}
+
+.MessagesPage-action {
+    background: rgb(255, 255, 255);
+    font-size: 25px;
+    line-height: 50px;
+    width: 100%;
+    text-align: center;
+}

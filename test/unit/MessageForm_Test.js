@@ -3,9 +3,11 @@ var expect = chai.expect;
 var React = require('react');
 
 var MessageForm = require('../../build/components/MessageForm');
+var submittedMessage;
 
-var getSubmittedMessage = function(text){
-    console.log('added: ',text)
+var getSubmittedMessage = function(content){
+    submittedMessage = content.text;
+    console.log('added: ',submittedMessage)
 };
 
 describe('MessageForm', function() {
@@ -29,18 +31,27 @@ describe('MessageForm', function() {
         expect(component.refs).to.exist;
     });
 
-    it('should return send button', function() {
+    it('should have a send button reference', function() {
         var sendBtn = component.refs.sendBtn;
         expect(sendBtn).to.exist;
     });
 
-    it('should return message text', function() {
+    it('should have a message text reference', function() {
         var messageText = component.refs.messageText;
         expect(messageText).to.exist;
     });
 
-    it('should return false when we add a new message', function() {
+    it('should return false when we add a new message to prevent the default event action', function() {
         expect(component.handleSubmit()).to.be.false;
+    });
+
+    it('should give the submitted message text via the handler', function() {
+
+        var myTestMessage = 'should be this message text I see';
+        component.refs.messageText.getDOMNode().value = myTestMessage;
+        component.handleSubmit();
+
+        expect(submittedMessage).to.equal(myTestMessage);
     });
 
 });

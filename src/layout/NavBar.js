@@ -15,7 +15,6 @@ var NavBar = React.createClass({
                     <div className="container">
                         <ul className="nav">
                             <li className={this.props.active === 'team' && 'active'}><a href="#/notes">Notes</a></li>
-                            <li className={this.props.active === 'notes' && 'active'}><a href="#/team">Team</a></li>
                         </ul>
                     </div>
                 </div>

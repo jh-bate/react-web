@@ -16,7 +16,7 @@ var GroupItemList = React.createClass({
         }.bind(this));
 
         return (
-            <div class="list-group">
+            <div className="list-group">
                 {items}
             </div>
         );

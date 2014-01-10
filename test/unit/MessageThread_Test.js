@@ -1,11 +1,8 @@
-/** @jsx React.DOM */
+var chai = require('chai');
+var expect = chai.expect;
 var React = require('react');
 
-var MobileLayout = require('../layout/MobileLayout');
-var SignInPage = require('../pages/SignInPage');
-var MessagesPage = require('../pages/MessagesPage');
-var MessageThreadPage = require('../pages/MessageThreadPage');
-
+var MessageThread = require('../../build/components/MessageThread');
 
 var messagesInThread = [
     {
@@ -42,30 +39,34 @@ var messagesInThread = [
     }
 ];
 
+describe('MessageThread', function() {
+    var component, container;
 
-var RootPage = React.createClass({
 
-    handleShowThread :function (threadId){
+    beforeEach(function() {
+        //we add our component to test into a div and then render it
+        component = MessageThread({
+            messages : messagesInThread
+        });
 
-        console.log('bubbled',threadId);
-        this.setProps({routeName :'notesThread',messages:messagesInThread,threadId:threadId});
-        return false;
-    },
+        container = document.createElement('div');
+        document.documentElement.appendChild(container);
+        React.renderComponent(component, container);
 
-    render: function() {
-    
-        var routeName = this.props.routeName;
+    });
 
-        if (routeName === '' || routeName === 'home') {
-            return <MobileLayout className="SignInPage" route="home"><SignInPage /></MobileLayout>;
-        } else if (routeName === 'notes') {
-            return <MobileLayout><MessagesPage onShowThread={this.handleShowThread} /></MobileLayout>;
-        }else if (routeName === 'notesThread') {
-            return <MobileLayout><MessageThreadPage messages={this.props.messages}/></MobileLayout>;
-        } else {
-            return <h1>Route not found</h1>;
-        }
-    }
+    afterEach(function() {
+        React.unmountComponentAtNode(container);
+        document.documentElement.removeChild(container);
+    });
+
+    it('should have messages property', function() {
+        expect(component.props.messages).to.exist;
+    });
+
+    it('should contain 5 messages ', function() {
+        expect(component.props.messages.length).to.equal(5);
+    });
+
+
 });
-
-module.exports = RootPage;

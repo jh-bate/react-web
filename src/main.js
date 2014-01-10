@@ -5,6 +5,6 @@ var RootPage = require('./pages/RootPage');
 
 ReactTouch.start(RootPage, document.getElementById('react-root'), {
   '/notes': 'notes',
-  '/team': 'team',
+  '/notesThread': 'notesThread',
   '/': 'home'
 });

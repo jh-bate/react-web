@@ -9,7 +9,7 @@ var MessageItemList = React.createClass({
         var items = this.props.messages.map(function(message, i) {
             return (
                 <MessageItem
-                    onClick={this.props.onMessageSelected.bind(this.props, i)}
+                    onClick={this.props.onMessageSelected.bind(message.groupid)}
                     key={message.id} 
                     name={message.name}
                     time={message.time}
@@ -19,7 +19,7 @@ var MessageItemList = React.createClass({
         }.bind(this));
 
         return (
-            <div class="list-group">
+            <div className="list-group">
                 {items}
             </div>
         );

@@ -3,6 +3,7 @@
 var React = require('react');
 
 var MessageItemList = require('../components/MessageItemList');
+var MessageItemList = require('../components/MessageItemList');
 var ContentWithActionBlock = require('../components/ContentWithActionBlock');
 var Spinner = require('../components/Spinner');
 
@@ -32,8 +33,8 @@ var MessagesPage = React.createClass({
         console.log('should add new message');
         return false;
     },
-    handleShowThread: function(){
-        console.log('should show messages in thread');
+    handleShowThread: function(threadGroupId){
+        this.props.onShowThread(threadGroupId);
         return false;
     },
     render: function() {

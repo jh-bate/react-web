@@ -32,7 +32,7 @@ var GroupsPage = React.createClass({
         return false;
     },
     handleShowThread: function(){
-        console.log('should show messages for group');
+        console.log('should show message thread for group');
         return false;
     },
     render: function() {
